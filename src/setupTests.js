@@ -1,5 +1,5 @@
 // We don't want to see noisy logging messages while running unit tests
-jest.mock('./cores/commons/logger', () => {
+jest.mock('./cores/utils/logger', () => {
   const logger = {
     log: jest.fn(),
     debug: jest.fn(),
