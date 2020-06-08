@@ -37,6 +37,7 @@ const init = async () => {
 
 const stop = async () => {
   logger.log('Try to close some services');
+  await db.sequelize.close();
 };
 
 module.exports = {

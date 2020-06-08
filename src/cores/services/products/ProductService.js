@@ -23,10 +23,10 @@ class ProductService {
    * @returns {Promise<Array>}
    */
   async list(filters = {}) {
-    const { name, colour, branch, page = 1, limit = 10 } = filters;
+    const { name, colour, branch, priceFrom, priceTo, page = 1, limit = 10 } = filters;
 
     const { rows: data, count: total } = await this.productDao.findAllAndFilter(
-        { name, colour, branch },
+        { name, colour, branch, priceFrom, priceTo },
         page,
         limit,
     );
