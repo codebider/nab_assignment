@@ -1,7 +1,7 @@
 # NAB Assessment
 
 ### Requirements
-[More detail here](./files/assignment.pdf)
+(Private)
 
 ### System Design
 1. A high-level solution diagram for the components.
