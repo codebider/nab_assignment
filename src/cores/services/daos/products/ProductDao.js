@@ -9,13 +9,13 @@ class ProductDao extends BaseDao {
    *
    * @returns {Promise<Array<Object>>} - list products
    */
-  async findAllAndFilter({ name, colour, branch, priceFrom, priceTo }, page = 1, limit = 10) {
+  async findAllAndFilter({ search, colour, branch, priceFrom, priceTo }, page = 1, limit = 10) {
     const offset = (page - 1) * limit;
 
     // Build query for name
     let queryName;
-    if (name) {
-      queryName = queryLike('name', name);
+    if (search) {
+      queryName = queryLike('name', search);
     }
     const queryPrice = queryRange('price', priceFrom, priceTo);
     const where = purgeMissingProperties({
