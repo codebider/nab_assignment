@@ -1,5 +1,8 @@
 # NAB Assessment
 
+### Requirements
+[More detail here](./files/assignment.pdf)
+
 ### System Design
 1. A high-level solution diagram for the components.
 ![High-level solution diagram](./files/high-level_solution.png)
