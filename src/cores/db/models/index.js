@@ -3,7 +3,7 @@ const path = require('path');
 const { Sequelize, DataTypes } = require('sequelize');
 
 const config = require('../../config');
-const logger = require('../../commons/logger');
+const logger = require('../../utils/logger');
 
 const configDB = config.get('db');
 
