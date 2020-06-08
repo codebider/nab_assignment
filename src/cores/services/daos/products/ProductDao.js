@@ -12,7 +12,7 @@ class ProductDao extends BaseDao {
   async findAllAndFilter({ name, colour, branch, priceFrom, priceTo }, page = 1, limit = 10) {
     const offset = (page - 1) * limit;
 
-    // Build query for time
+    // Build query for name
     let queryName;
     if (name) {
       queryName = queryLike('name', name);
