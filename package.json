@@ -75,5 +75,8 @@
   "bugs": {
     "url": "https://github.com/daniel93cs/nab_assessment/issues"
   },
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "homepage": "https://github.com/daniel93cs/nab_assessment#readme"
 }
