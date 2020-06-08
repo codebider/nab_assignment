@@ -30,8 +30,8 @@
 
 ### Code structure
     .
-    ├── file                        # Documentation files (alternatively `doc`)
-    ├── src                         # Source files (alternatively `lib` or `app`)
+    ├── file                        # Documentation files
+    ├── src                         # Source files
     │   ├── apis                    # Storing apis
     │   ├── commons                 # Common utils
     │   └── cores                   # Core bussines
