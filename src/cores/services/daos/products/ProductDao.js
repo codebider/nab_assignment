@@ -8,7 +8,7 @@ class ProductDao extends BaseDao {
    *
    * @returns {Promise<Array<Object>>} - list products
    */
-  async findAllAndFilter({ name }, page = 1, limit = 10) {
+  async findAllAndFilter({ name, colour, branch }, page = 1, limit = 10) {
     const { Op } = this.Sequelize;
     const offset = (page - 1) * limit;
 
@@ -19,7 +19,7 @@ class ProductDao extends BaseDao {
         [Op.like]: `%${name}%`,
       };
     }
-    const where = purgeMissingProperties({ name: queryName });
+    const where = purgeMissingProperties({ name: queryName, colour, branch });
     const data = await this.Model.findAndCountAll({
       where,
       offset,
