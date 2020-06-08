@@ -1,0 +1,24 @@
+{
+  "name": "nab_assessment",
+  "version": "0.0.1",
+  "description": "NAB VDC - NodeJS Take-home Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel93cs/nab_assessment.git"
+  },
+  "keywords": [
+    "nab",
+    "nodejs",
+    "assignment"
+  ],
+  "author": "Daniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel93cs/nab_assessment/issues"
+  },
+  "homepage": "https://github.com/daniel93cs/nab_assessment#readme"
+}
