@@ -3,6 +3,7 @@ const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/models');
 const productDao = require('./services/daos/products');
+const productService = require('./services/products');
 // Main container for whole application.
 const container = createContainer();
 
@@ -16,6 +17,7 @@ container.register({
   productDao: asFunction(productDao).singleton(),
 
   // Services
+  productService: asFunction(productService).singleton()
 });
 
 const registerContainer = () => {

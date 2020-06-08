@@ -7,7 +7,7 @@ class ProductDao extends BaseDao {
    *
    * @returns {Promise<Array<Object>>} - list products
    */
-  async findAllRestaurants() {
+  async findAll() {
     const collections = await this.Model.findAll();
 
     return toJSON(collections);
