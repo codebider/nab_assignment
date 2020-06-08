@@ -8,7 +8,7 @@ class BaseDao {
   constructor({ model, db, ...rest }) {
     Object.assign(this, rest);
 
-    this.model = model;
+    this.Model = Model;
     this.sequelize = db.sequelize;
     this.Sequelize = db.Sequelize;
   }
@@ -21,7 +21,7 @@ class BaseDao {
    * @returns {Promise}
    */
   async findAll(where = {}, attributes) {
-    return this.model.findAll({ raw: true, where, attributes });
+    return this.Model.findAll({ raw: true, where, attributes });
   }
 
   /**
@@ -31,7 +31,7 @@ class BaseDao {
    * @returns {Promise}
    */
   async findById(id) {
-    return this.model.findByPk(id, { raw: true });
+    return this.Model.findByPk(id, { raw: true });
   }
 
   /**
@@ -41,7 +41,7 @@ class BaseDao {
    * @returns {Promise}
    */
   async findOne(where) {
-    return this.model.findOne({ where, raw: true });
+    return this.Model.findOne({ where, raw: true });
   }
 
   /**
@@ -53,7 +53,7 @@ class BaseDao {
    * @returns {Promise}
    */
   async create(payload) {
-    return this.model.create(payload, { raw: true });
+    return this.Model.create(payload, { raw: true });
   }
 
   /**
@@ -65,15 +65,15 @@ class BaseDao {
    * @returns {Promise}
    */
   async update(values, where = {}, transaction) {
-    return this.model.update(values, { where, transaction });
+    return this.Model.update(values, { where, transaction });
   }
 
   async count(where = {}) {
-    return this.model.count({ where });
+    return this.Model.count({ where });
   }
 
   async deleteById(id) {
-    return this.model.destroy({ where: { id } });
+    return this.Model.destroy({ where: { id } });
   }
 
   /**
