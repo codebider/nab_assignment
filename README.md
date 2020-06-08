@@ -29,6 +29,15 @@
 
 
 ### Code structure
+    .
+    ├── file                        # Documentation files (alternatively `doc`)
+    ├── src                         # Source files (alternatively `lib` or `app`)
+    │   ├── apis                    # Storing apis
+    │   ├── commons                 # Common utils
+    │   └── cores                   # Core bussines
+    │   └── plugins                 # Plugins for happi
+    ├── docker-compose.yml          # Build the database for developing
+    └── README.md
 
 ### Development
 
