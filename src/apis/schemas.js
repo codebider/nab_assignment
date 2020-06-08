@@ -14,14 +14,14 @@ const allowMissing = ['', null];
 
 // OK response
 const OK = {
-    success: true,
+  success: true,
 };
 
 module.exports = {
-    allowMissing,
-    objectItem,
-    numberItem,
-    stringItem,
-    id,
-    OK,
+  allowMissing,
+  objectItem,
+  numberItem,
+  stringItem,
+  id,
+  OK,
 };

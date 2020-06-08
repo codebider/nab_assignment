@@ -26,9 +26,9 @@ class ProductService {
     const { search, colour, branch, priceFrom, priceTo, page = 1, limit = 10 } = filters;
 
     const { rows: data, count: total } = await this.productDao.findAllAndFilter(
-        { search, colour, branch, priceFrom, priceTo },
-        page,
-        limit,
+      { search, colour, branch, priceFrom, priceTo },
+      page,
+      limit,
     );
     return {
       data,

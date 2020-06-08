@@ -1,3 +1,3 @@
-const externalProducts = require('./external/products')
+const externalProducts = require('./external/products');
 
 module.exports = [...externalProducts];

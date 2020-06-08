@@ -19,7 +19,10 @@ class ProductDao extends BaseDao {
     }
     const queryPrice = queryRange('price', priceFrom, priceTo);
     const where = purgeMissingProperties({
-      colour, branch, ...queryName, ...queryPrice
+      colour,
+      branch,
+      ...queryName,
+      ...queryPrice,
     });
     const data = await this.Model.findAndCountAll({
       where,

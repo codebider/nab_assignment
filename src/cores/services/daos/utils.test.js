@@ -18,13 +18,13 @@ describe('utils', () => {
       `);
     });
 
-      it('should build correct query when missing value', () => {
-          // Give
-          const field = 'name';
-          // When
-          const result = queryLike(field);
-          // Then
-          expect(result).toEqual({});
-      });
+    it('should build correct query when missing value', () => {
+      // Give
+      const field = 'name';
+      // When
+      const result = queryLike(field);
+      // Then
+      expect(result).toEqual({});
+    });
   });
 });

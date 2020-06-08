@@ -17,7 +17,7 @@ container.register({
   productDao: asFunction(productDao).singleton(),
 
   // Services
-  productService: asFunction(productService).singleton()
+  productService: asFunction(productService).singleton(),
 });
 
 const registerContainer = () => {
