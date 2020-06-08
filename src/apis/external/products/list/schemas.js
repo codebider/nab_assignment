@@ -1,10 +1,10 @@
-const { stringItem, id, objectItem } = require('../../../schemas');
+const { stringItem, id, objectItem, numberItem, allowMissing } = require('../../../schemas');
 
-const headerSchema = objectItem
-  .keys({
-    authorization: stringItem.example('TOKEN'),
-  })
-  .unknown();
+const querySchema = objectItem.keys({
+  name: stringItem.allow(...allowMissing).example('123'),
+  limit: numberItem.example(10).allow(...allowMissing),
+  page: numberItem.example(1).allow(...allowMissing),
+});
 
 const responseSchema = objectItem.keys({
   data: {
@@ -15,6 +15,6 @@ const responseSchema = objectItem.keys({
 });
 
 module.exports = {
-  headerSchema,
+  querySchema,
   responseSchema,
 };

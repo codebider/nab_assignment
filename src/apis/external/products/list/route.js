@@ -13,7 +13,7 @@ const route = {
     description: 'List products',
     notes: 'List products',
     validate: {
-      headers: schemas.headerSchema,
+      query: schemas.querySchema,
     },
     plugins: {
       'hapi-swagger': {
