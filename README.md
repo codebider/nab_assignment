@@ -14,7 +14,7 @@
 
 3. API Layer
 
-* External - For user facing (need optimize such as caching, ...)
+* External - For user facing (need to optimize such as caching, ...)
 - [ ] GET api/external/products - Get, search, filter products
 - [ ] GET api/external/products/{id} - Get product detail
 
@@ -25,6 +25,7 @@
 - [ ] DELETE api/internal/products/{id} - Delete product
 - [ ] POST api/internal/orders - Make an order
 - [ ] POST api/internal/orders/{id} - Get order detail
+- [ ] GET api/internal/activities - Get, filter list activities
 
 
 ### Code structure
