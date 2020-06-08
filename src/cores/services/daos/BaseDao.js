@@ -5,7 +5,7 @@
  * @class
  */
 class BaseDao {
-  constructor({ model, db, ...rest }) {
+  constructor({ Model, db, ...rest }) {
     Object.assign(this, rest);
 
     this.Model = Model;
