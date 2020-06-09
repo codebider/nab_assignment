@@ -37,6 +37,12 @@ class ProductDao extends BaseDao {
     return toJSON(data);
   }
 
+  /**
+   * get list pricing by list product ids
+   *
+   * @param {Array<number>} ids
+   * @returns {Promise<any>} - list pricing with id
+   */
   async getPricing(ids) {
     const data = await this.Model.findAll({
       where: queryIn('id', ids),
