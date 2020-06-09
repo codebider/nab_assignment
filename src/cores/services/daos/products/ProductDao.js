@@ -1,7 +1,7 @@
 const BaseDao = require('../BaseDao');
 const toJSON = require('../../../../commons/helpers/toJSON');
 const purgeMissingProperties = require('../../../../commons/helpers/purgeMissingProperties');
-const { queryLike, queryRange } = require('../utils');
+const { queryLike, queryRange, queryIn } = require('../utils');
 
 class ProductDao extends BaseDao {
   /**
@@ -37,6 +37,14 @@ class ProductDao extends BaseDao {
       offset,
       limit,
       attributes: ['id', 'name', 'colour', 'branch', 'price'],
+    });
+    return toJSON(data);
+  }
+
+  async getPricing(ids) {
+    const data = await this.Model.findAll({
+      where: queryIn('id', ids),
+      attributes: ['id', 'price'],
     });
     return toJSON(data);
   }

@@ -5,9 +5,9 @@ const list = async request => {
 
   const orderService = request.getContainer('orderService');
 
-  await orderService.create(payload);
+  const response = await orderService.create(payload);
 
-  return responseMapper.mapData();
+  return responseMapper.mapData(response);
 };
 
 module.exports = {

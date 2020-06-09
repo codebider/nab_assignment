@@ -1,4 +1,4 @@
-const { stringItem, id, objectItem, numberItem, allowMissing, arrayItem } = require('../../../schemas');
+const { stringItem, objectItem, numberItem, arrayItem } = require('../../../schemas');
 
 const headerSchema = objectItem
   .keys({

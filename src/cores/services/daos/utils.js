@@ -13,6 +13,14 @@ const queryLike = (field, value) => {
   };
 };
 
+const queryIn = (field, value) => {
+  return {
+    [field]: {
+      [Sequelize.Op.in]: value,
+    },
+  };
+};
+
 const queryRange = (field, from, to) => {
   if (isMissing(from) && isMissing(to)) {
     return {};
@@ -30,6 +38,7 @@ const queryRange = (field, from, to) => {
 };
 
 module.exports = {
+  queryIn,
   queryLike,
   queryRange,
 };

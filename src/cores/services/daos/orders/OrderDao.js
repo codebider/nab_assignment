@@ -18,6 +18,8 @@ class OrderDao extends BaseDao {
       // If the execution reaches this line, no errors were thrown.
       // We commit the transaction.
       await transaction.commit();
+
+      return order;
     } catch (error) {
       // If the execution reaches this line, an error was thrown.
       // We rollback the transaction.
