@@ -24,7 +24,8 @@
 - [ ] PUT api/internal/products/{id} - Update product
 - [ ] DELETE api/internal/products/{id} - Delete product
 - [x] POST api/internal/orders - Make an order
-- [ ] POST api/internal/orders/{id} - Get order detail
+- [ ] GET api/internal/orders/{id} - Get order detail
+- [ ] PUT api/internal/orders/{id} - Update order detail
 - [x] GET api/internal/activities - Get, filter list activities
 
 
