@@ -55,7 +55,7 @@ describe('utils', () => {
       expect(result).toEqual({});
     });
 
-    it('should build correct query when missing from value', () => {
+    it('should build correct query when missing fromValue', () => {
       // Give
       const field = 'price';
       const from = 10;
@@ -66,6 +66,22 @@ describe('utils', () => {
         Object {
           "price": Object {
             Symbol(gte): 10,
+          },
+        }
+      `);
+    });
+
+    it('should build correct query when missing toValue', () => {
+      // Give
+      const field = 'price';
+      const to = 10;
+      // When
+      const result = queryRange(field, null, to);
+      // Then
+      expect(result).toMatchInlineSnapshot(`
+        Object {
+          "price": Object {
+            Symbol(lte): 10,
           },
         }
       `);
