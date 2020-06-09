@@ -40,6 +40,9 @@
     └── README.md
 
 ### Development
+Steps to run service locally
+- Install libs `npm install`
+- Start service `npm run develop`
 
 ### Example:
 

@@ -1,6 +1,9 @@
-const { createContainer, asValue } = require('awilix');
+const { createContainer, asValue, asFunction } = require('awilix');
 const config = require('./config');
 const logger = require('./utils/logger');
+const db = require('./db/models');
+const productDao = require('./services/daos/products');
+const productService = require('./services/products');
 // Main container for whole application.
 const container = createContainer();
 
@@ -10,8 +13,11 @@ container.register({
   logger: asValue(logger),
 
   // DB
+  db: asValue(db),
+  productDao: asFunction(productDao).singleton(),
 
   // Services
+  productService: asFunction(productService).singleton(),
 });
 
 const registerContainer = () => {
@@ -26,10 +32,12 @@ const registerContainer = () => {
 
 const init = async () => {
   logger.log('Try to init some services');
+  await db.sequelize.authenticate();
 };
 
 const stop = async () => {
   logger.log('Try to close some services');
+  await db.sequelize.close();
 };
 
 module.exports = {
