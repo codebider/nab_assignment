@@ -34,7 +34,7 @@ describe('ProductService', () => {
 
     const cache = {
       products: {
-        get: cacheGetMock
+        get: cacheGetMock,
       },
     };
 
