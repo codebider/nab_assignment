@@ -12,6 +12,8 @@ const activityDao = require('./services/daos/activities');
 const productService = require('./services/products');
 const activityService = require('./services/activities');
 const orderService = require('./services/orders');
+
+const cache = require('./libs/cache');
 // Main container for whole application.
 const container = createContainer();
 
@@ -26,6 +28,7 @@ container.register({
   activityDao: asFunction(activityDao).singleton(),
   orderProductDao: asFunction(orderProductDao).singleton(),
   orderDao: asFunction(orderDao).singleton(),
+  cache: asFunction(cache).singleton(),
 
   // Services
   productService: asFunction(productService).scoped(),

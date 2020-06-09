@@ -6,6 +6,7 @@ describe('ProductService', () => {
   let service = null;
   let findAllAndFilterMock;
   let findByIdMock;
+  let cacheGetMock;
   let createSearchingActivityMock;
   let createViewingActivityMock;
 
@@ -14,6 +15,7 @@ describe('ProductService', () => {
     createSearchingActivityMock = jest.fn();
     createViewingActivityMock = jest.fn();
     findByIdMock = jest.fn();
+    cacheGetMock = jest.fn();
 
     const logger = {
       info: jest.fn(),
@@ -30,10 +32,17 @@ describe('ProductService', () => {
       createViewingActivity: createViewingActivityMock,
     };
 
+    const cache = {
+      products: {
+        get: cacheGetMock,
+      },
+    };
+
     service = new ProductService({
       logger,
       productDao,
       activityService,
+      cache,
     });
   });
 
@@ -103,6 +112,10 @@ describe('ProductService', () => {
       // Validate params
       when(findByIdMock)
         .calledWith(product.id)
+        .mockResolvedValue(product);
+
+      when(cacheGetMock)
+        .calledWith(`KEY_CACHE_PRODUCT_${product.id}`)
         .mockResolvedValue(product);
       // When
       const result = await service.getById(2);

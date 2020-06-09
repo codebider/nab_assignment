@@ -82,10 +82,15 @@
 
 ### Migration
 - Use this command line to create new model
+
 `npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string`
 
-- Migrate database: `npm run sequelize-cli db:migrate`
+- Migrate database:
 
-- Undo migrate: `npm run sequelize-cli db:migrate:undo`
+`npm run sequelize-cli db:migrate`
+
+- Undo migrate:
+
+`npm run sequelize-cli db:migrate:undo`
 
 ## References

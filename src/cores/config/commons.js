@@ -9,4 +9,5 @@ module.exports = {
     version: pkg.version,
     path: '/docs',
   },
+  cache: [{ key: 'products', ttl: 60 }],
 };
