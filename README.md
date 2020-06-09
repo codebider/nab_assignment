@@ -11,6 +11,10 @@
   - [Requirements](#requirements)
   - [Development](#development)
   - [Migration](#Migration)
+  - [Note](#note)
+  - [Suggested](#Suggested)
+  - [TODO](#TODO)
+  - [Sample](#sample)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -28,7 +32,7 @@
 
 3. API Layer
 
-* External - For user facing (need to optimize such as caching, ...)
+* External - For user facing (need to optimize: caching, queue)
 - [x] GET api/external/products - Get, search, filter products
 - [x] GET api/external/products/{id} - Get product detail
 
@@ -47,10 +51,14 @@
     .
     ├── file                        # Documentation files
     ├── src                         # Source files
-    │   ├── apis                    # Storing apis
+    │   ├── apis                    # Configurate all apis
     │   ├── commons                 # Common utils
     │   └── cores                   # Core bussines
-    │   └── plugins                 # Plugins for happi
+    │   │   └── config              # Storing configuration
+    │   │   └── db                  # DB migration, models
+    │   │   └── libs                # Some libs like cache, queue, ..
+    │   │   └── services            # Core bussines logic here
+    │   └── plugins                 # Plugins for happi framwork
     ├── docker-compose.yml          # Build the database for developing
     └── README.md
 
@@ -93,4 +101,46 @@
 
 `npm run sequelize-cli db:migrate:undo`
 
+### note
+- What is uuid in the header?
+    - This value just like user session.
+    - In the client side, we need to generate the uuid and pass to header so that we can store this value to activity logs. So that we can easily track user flow.
+
+### Suggested
+- For tracking activities, we can use GA (Google Analytics). it is more powerful for tracking user flow.
+
+### TODO:
+- Finish all remain apis.
+- Use queue for save activity event.
+
+### Sample
+- Get list products
+```
+curl -X GET "http://0.0.0.0:5000/external/products" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Search products by name
+```
+curl -X GET "http://0.0.0.0:5000/external/products?search=laptop" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Filter products by colour
+```
+curl -X GET "http://0.0.0.0:5000/external/products?colour=red" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Filter products by branch
+```
+curl -X GET "http://0.0.0.0:5000/external/products?branch=apple" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Get product by id
+```
+curl -X GET "http://0.0.0.0:5000/external/products/1" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Admin make order
+```
+curl -X POST "http://0.0.0.0:5000/internal/orders" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002" -H "Content-Type: application/json" -d "{ \"customerPhone\": \"0961171948\", \"customerName\": \"Daniel\", \"shippingAddress\": \"235 Cong Hoa\", \"shippingCity\": \"Ho Chi Minh\", \"products\": [ { \"productId\": 1, \"quantity\": 2 } ]}"
+```
 ## References
