@@ -101,7 +101,7 @@
 
 `npm run sequelize-cli db:migrate:undo`
 
-### note
+### Note
 - What is uuid in the header?
     - This value just like user session.
     - In the client side, we need to generate the uuid and pass to header so that we can store this value to activity logs. So that we can easily track user flow.
