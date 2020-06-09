@@ -1,6 +1,8 @@
 const pick = require('lodash/pick');
 
 const throwIfMissing = require('../../../commons/assertion/throwIfMissing');
+const isMissing = require('../../../commons/conditional/isMissing');
+const NotFoundError = require('../../../commons/errors/NotFoundError');
 
 const REQUIRED_OPTIONS = ['logger', 'productDao'];
 
@@ -38,6 +40,22 @@ class ProductService {
         page,
       },
     };
+  }
+
+  /**
+   * Get product detail by id
+   *
+   * @param {number} id
+   * @returns {Promise<Object>}
+   */
+  async getById(id) {
+    const product = await this.productDao.findById(id);
+
+    if (isMissing(product)) {
+      throw new NotFoundError('Not found');
+    }
+
+    return product;
   }
 }
 

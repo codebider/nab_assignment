@@ -2,14 +2,12 @@ const responseMapper = require('../../../../commons/responseMapper');
 
 const handle = async request => {
   const {
-    params: { id: collectionId },
+    params: { id: productId },
   } = request;
 
-  const { id: userId } = request.getUser();
+  const productService = request.getContainer('productService');
 
-  const collectionService = request.getContainer('collectionService');
-
-  const data = await collectionService.getById(userId, collectionId);
+  const data = await productService.getById(productId);
 
   return responseMapper.mapData(data);
 };
