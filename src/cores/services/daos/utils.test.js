@@ -1,4 +1,4 @@
-const { queryLike, queryRange } = require('./utils');
+const { queryLike, queryRange, queryIn } = require('./utils');
 
 describe('utils', () => {
   describe('utils.queryLike function', () => {
@@ -27,6 +27,7 @@ describe('utils', () => {
       expect(result).toEqual({});
     });
   });
+
   describe('utils.queryRange function', () => {
     it('should build correct query', () => {
       // Give
@@ -82,6 +83,28 @@ describe('utils', () => {
         Object {
           "price": Object {
             Symbol(lte): 10,
+          },
+        }
+      `);
+    });
+  });
+
+  describe('utils.queryIn function', () => {
+    it('should build correct query', () => {
+      // Give
+      const field = 'price';
+      const value = [10, 12, 22];
+      // When
+      const result = queryIn(field, value);
+      // Then
+      expect(result).toMatchInlineSnapshot(`
+        Object {
+          "price": Object {
+            Symbol(in): Array [
+              10,
+              12,
+              22,
+            ],
           },
         }
       `);
