@@ -1,0 +1,15 @@
+module.exports = (sequelize, DataTypes) => {
+  const Activity = sequelize.define(
+    'Activity',
+    {
+      uuid: DataTypes.STRING,
+      action: DataTypes.STRING,
+      payload: DataTypes.JSONB,
+    },
+    {},
+  );
+  Activity.associate = function() {
+    // associations can be defined here
+  };
+  return Activity;
+};
