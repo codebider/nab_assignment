@@ -5,9 +5,17 @@ const { queryLike, queryRange } = require('../utils');
 
 class ProductDao extends BaseDao {
   /**
-   * Find all products
+   * Get, search, filter products
    *
-   * @returns {Promise<Array<Object>>} - list products
+   * @param {string} search - search by name
+   * @param {string} colour - filter by colour
+   * @param {string} branch - filter by branch
+   * @param {number} priceFrom - filter price
+   * @param {number} priceTo - filter price
+   * @param {number} page - number of page
+   * @param {number} limit - number of item per page
+   *
+   * @returns {Promise<any>} - list of products
    */
   async findAllAndFilter({ search, colour, branch, priceFrom, priceTo }, page = 1, limit = 10) {
     const offset = (page - 1) * limit;
