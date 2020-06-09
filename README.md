@@ -120,6 +120,11 @@
 curl -X GET "http://0.0.0.0:5000/external/products" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
 ```
 
+- Get list products with sort
+```
+curl -X GET "http://0.0.0.0:5000/external/products?sortBy=-price" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
 - Search products by name
 ```
 curl -X GET "http://0.0.0.0:5000/external/products?search=laptop" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
