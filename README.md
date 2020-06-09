@@ -112,6 +112,7 @@
 ### TODO:
 - Finish all remain apis.
 - Use queue for save activity event.
+- We can move activity module to another service. 
 
 ### Sample
 - Get list products
