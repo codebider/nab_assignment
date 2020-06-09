@@ -1,7 +1,5 @@
 # NAB Assessment
 
-![](https://github.com/actions/hello-world/workflows/node.js/badge.svg)
-
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
