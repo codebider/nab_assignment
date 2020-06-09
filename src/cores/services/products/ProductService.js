@@ -32,6 +32,20 @@ class ProductService {
       page,
       limit,
     );
+
+    if (search) {
+      await this.activityService.createSearchingActivity(search);
+    }
+
+    if (colour || branch || priceFrom || priceTo) {
+      await this.activityService.createFilteringActivity({
+        colour,
+        branch,
+        priceFrom,
+        priceTo,
+      });
+    }
+
     return {
       data,
       meta: {
