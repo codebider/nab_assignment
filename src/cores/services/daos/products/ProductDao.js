@@ -7,11 +7,7 @@ class ProductDao extends BaseDao {
   /**
    * Get, search, filter products
    *
-   * @param {string} search - search by name
-   * @param {string} colour - filter by colour
-   * @param {string} branch - filter by branch
-   * @param {number} priceFrom - filter price
-   * @param {number} priceTo - filter price
+   * @param {Object} filter
    * @param {number} page - number of page
    * @param {number} limit - number of item per page
    *

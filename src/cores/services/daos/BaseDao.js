@@ -50,6 +50,7 @@ class BaseDao {
    * @see https://sequelize.org/master/manual/model-instances.html
    *
    * @param {Object} payload
+   * @param {Object} transaction
    * @returns {Promise}
    */
   async create(payload, transaction) {

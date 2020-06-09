@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Activity.associate = function() {
+  Activity.associate = () => {
     // associations can be defined here
   };
   return Activity;

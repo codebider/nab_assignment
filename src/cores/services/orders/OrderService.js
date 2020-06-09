@@ -23,9 +23,11 @@ class OrderService {
   /**
    * Create order
    *
+   * @param {Object} payload
    * @returns {Promise<Array>}
    */
   async create(payload) {
+    this.logger.debug('Create order with payload', payload);
     const { products, ...order } = payload;
     // Calculate total price
     const shippingFee = 100; // Hardcode for now, should be calculate base on address

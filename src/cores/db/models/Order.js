@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  Order.associate = function() {
+  Order.associate = () => {
     // associations can be defined here
   };
   return Order;
