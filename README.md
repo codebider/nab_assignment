@@ -28,7 +28,7 @@
 
 3. API Layer
 
-* External - For user facing (need to optimize such as caching, ...)
+* External - For user facing (need to optimize: caching, queue)
 - [x] GET api/external/products - Get, search, filter products
 - [x] GET api/external/products/{id} - Get product detail
 
@@ -93,4 +93,34 @@
 
 `npm run sequelize-cli db:migrate:undo`
 
+### Sample
+- Get list products
+```
+curl -X GET "http://0.0.0.0:5000/external/products" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Search products by name
+```
+curl -X GET "http://0.0.0.0:5000/external/products?search=laptop" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Filter products by colour
+```
+curl -X GET "http://0.0.0.0:5000/external/products?colour=red" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Filter products by branch
+```
+curl -X GET "http://0.0.0.0:5000/external/products?branch=apple" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Get product by id
+```
+curl -X GET "http://0.0.0.0:5000/external/products/1" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002"
+```
+
+- Admin make order
+```
+curl -X POST "http://0.0.0.0:5000/internal/orders" -H "accept: application/json" -H "uuid: 8717febc-a9e7-11ea-bb37-0242ac130002" -H "Content-Type: application/json" -d "{ \"customerPhone\": \"0961171948\", \"customerName\": \"Daniel\", \"shippingAddress\": \"235 Cong Hoa\", \"shippingCity\": \"Ho Chi Minh\", \"products\": [ { \"productId\": 1, \"quantity\": 2 } ]}"
+```
 ## References
