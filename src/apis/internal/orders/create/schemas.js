@@ -6,7 +6,7 @@ const headerSchema = objectItem
   })
   .unknown();
 
-const querySchema = objectItem.keys({
+const payloadSchema = objectItem.keys({
   uuid: stringItem.example('8717febc-a9e7-11ea-bb37-0242ac130002').allow(...allowMissing),
   action: stringItem.example('filtering').allow(...allowMissing),
   limit: numberItem.example(10).allow(...allowMissing),
@@ -23,6 +23,6 @@ const responseSchema = objectItem.keys({
 
 module.exports = {
   headerSchema,
-  querySchema,
+  payloadSchema,
   responseSchema,
 };

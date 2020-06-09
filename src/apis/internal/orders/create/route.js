@@ -6,15 +6,15 @@ const schemas = require('./schemas');
 
 const route = {
   method: 'GET',
-  path: '/internal/activities',
+  path: '/internal/orders',
   handler: handler.list,
   options: {
-    tags: ['api', 'internal', 'activities', 'list'],
-    description: 'List activities',
-    notes: 'List activities',
+    tags: ['api', 'internal', 'orders', 'create'],
+    description: 'create orders',
+    notes: 'create orders',
     validate: {
       headers: schemas.headerSchema,
-      query: schemas.querySchema,
+      payload: schemas.payloadSchema,
     },
     plugins: {
       'hapi-swagger': {

@@ -1,13 +1,13 @@
 const responseMapper = require('../../../../commons/responseMapper');
 
 const list = async request => {
-  const { query } = request;
+  const { payload } = request;
 
-  const activityService = request.getContainer('activityService');
+  const orderService = request.getContainer('orderService');
 
-  const { data, meta } = await activityService.list(query);
+  await orderService.create(payload);
 
-  return responseMapper.mapData(data, meta);
+  return responseMapper.mapData();
 };
 
 module.exports = {

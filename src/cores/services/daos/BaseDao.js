@@ -52,8 +52,8 @@ class BaseDao {
    * @param {Object} payload
    * @returns {Promise}
    */
-  async create(payload) {
-    return this.Model.create(payload, { raw: true });
+  async create(payload, transaction) {
+    return this.Model.create(payload, { raw: true, transaction });
   }
 
   /**
