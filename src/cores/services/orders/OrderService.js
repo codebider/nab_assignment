@@ -1,6 +1,7 @@
 const pick = require('lodash/pick');
 
 const throwIfMissing = require('../../../commons/assertion/throwIfMissing');
+const bigNumber = require('../../utils/math-utils');
 
 const REQUIRED_OPTIONS = ['logger', 'orderDao'];
 
@@ -25,6 +26,20 @@ class OrderService {
   async create(payload) {
     const { products, ...order } = payload;
     // TODO: Validate product ids
+
+    // Calculate total price
+    const { shippingFee } = order;
+    const totalPrice = bigNumber(shippingFee);
+
+    products.forEach(({ price, quantity }) => {
+      const productPrice = bigNumber(price)
+        .times(quantity)
+        .toNumber();
+
+      totalPrice.plus(productPrice);
+    });
+
+    Object.assign(order, { totalPrice: totalPrice.toFixed() });
 
     await this.orderDao.createOrder(order, products);
   }
