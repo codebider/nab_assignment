@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     'Activity',
     {
       uuid: DataTypes.STRING,
-      action: DataTypes.STRING,
+      action: DataTypes.ENUM('searching', 'filtering', 'viewing'),
       payload: DataTypes.JSONB,
     },
     {},
