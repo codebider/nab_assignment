@@ -6,6 +6,7 @@ const NotFoundError = require('../../../commons/errors/NotFoundError');
 
 const REQUIRED_OPTIONS = ['logger', 'productDao', 'activityService', 'cache'];
 
+const KEY_CACHE_PRODUCTS = 'KEY_CACHE_PRODUCT_';
 /**
  * ProductService
  * This is Product service
@@ -64,8 +65,7 @@ class ProductService {
    * @returns {Promise<Object>}
    */
   async getById(id) {
-    // TODO: caching this one
-    const product = await this.cache.products.get(`DEMO${id}`, async () => {
+    const product = await this.cache.products.get(`${KEY_CACHE_PRODUCTS}${id}`, async () => {
       const data = await this.productDao.findById(id);
       return data;
     });

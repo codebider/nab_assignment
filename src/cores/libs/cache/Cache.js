@@ -6,8 +6,9 @@ const { init, set, get } = require('node-cache-redis');
 class Cache {
   constructor(stdTTL) {
     const cacheConfig = {
-      ttlInSeconds: stdTTL,
+      name: 'cache',
     };
+    this.ttl = stdTTL;
 
     this.cache = {
       init,
@@ -40,7 +41,7 @@ class Cache {
     }
 
     return storeFunction().then(async result => {
-      await this.cache.set(key, result);
+      await this.cache.set(key, result, this.ttl);
       return result;
     });
   }
