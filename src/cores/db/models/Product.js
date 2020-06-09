@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  Product.associate = function() {
+  Product.associate = () => {
     // associations can be defined here
   };
   return Product;

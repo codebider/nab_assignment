@@ -1,17 +1,13 @@
 const BaseDao = require('../BaseDao');
 const toJSON = require('../../../../commons/helpers/toJSON');
 const purgeMissingProperties = require('../../../../commons/helpers/purgeMissingProperties');
-const { queryLike, queryRange } = require('../utils');
+const { queryLike, queryRange, queryIn } = require('../utils');
 
 class ProductDao extends BaseDao {
   /**
    * Get, search, filter products
    *
-   * @param {string} search - search by name
-   * @param {string} colour - filter by colour
-   * @param {string} branch - filter by branch
-   * @param {number} priceFrom - filter price
-   * @param {number} priceTo - filter price
+   * @param {Object} filter
    * @param {number} page - number of page
    * @param {number} limit - number of item per page
    *
@@ -37,6 +33,20 @@ class ProductDao extends BaseDao {
       offset,
       limit,
       attributes: ['id', 'name', 'colour', 'branch', 'price'],
+    });
+    return toJSON(data);
+  }
+
+  /**
+   * get list pricing by list product ids
+   *
+   * @param {Array<number>} ids
+   * @returns {Promise<any>} - list pricing with id
+   */
+  async getPricing(ids) {
+    const data = await this.Model.findAll({
+      where: queryIn('id', ids),
+      attributes: ['id', 'price'],
     });
     return toJSON(data);
   }

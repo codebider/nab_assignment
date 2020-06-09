@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const isMissing = require('../../../commons/conditional/isMissing');
+const throwIfNotArray = require('../../../commons/assertion/throwIfNotArray');
 
 const queryLike = (field, value) => {
   if (isMissing(value)) {
@@ -9,6 +10,16 @@ const queryLike = (field, value) => {
   return {
     [field]: {
       [Sequelize.Op.like]: `%${value}%`,
+    },
+  };
+};
+
+const queryIn = (field, value) => {
+  throwIfNotArray(value, 'This value is not an array');
+
+  return {
+    [field]: {
+      [Sequelize.Op.in]: value,
     },
   };
 };
@@ -30,6 +41,7 @@ const queryRange = (field, from, to) => {
 };
 
 module.exports = {
+  queryIn,
   queryLike,
   queryRange,
 };
