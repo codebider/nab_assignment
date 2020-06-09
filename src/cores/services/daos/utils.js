@@ -40,8 +40,18 @@ const queryRange = (field, from, to) => {
   return query;
 };
 
+const buildOrder = value => {
+  if (value.indexOf('-') === 0) {
+    const field = value.replace('-', '');
+    return [[field, 'DESC']];
+  }
+
+  return [[value, 'ASC']];
+};
+
 module.exports = {
   queryIn,
   queryLike,
   queryRange,
+  buildOrder,
 };

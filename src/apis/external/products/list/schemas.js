@@ -7,6 +7,10 @@ const headerSchema = objectItem
   .unknown();
 
 const querySchema = objectItem.keys({
+  sortBy: stringItem
+    .example('-price')
+    .valid('price', '-price', 'branch', '-branch', 'name', '-name', 'colour', '-colour')
+    .allow(...allowMissing),
   branch: stringItem.example('apple').allow(...allowMissing),
   colour: stringItem.example('red').allow(...allowMissing),
   search: stringItem.allow(...allowMissing).example('laptop'),
