@@ -27,7 +27,6 @@ class OrderService {
    */
   async create(payload) {
     const { products, ...order } = payload;
-    // TODO: Validate product ids
     // Calculate total price
     const shippingFee = 100; // Hardcode for now, should be calculate base on address
 
@@ -36,7 +35,7 @@ class OrderService {
     const productIds = products.map(({ productId }) => productId);
     const productPrices = await this.productDao.getPricing(productIds);
 
-    // Validate product id
+    // Validate product ids
     if (productPrices.length !== productIds.length) {
       throw new BadUserInputError('Product Id Not Found');
     }
