@@ -51,10 +51,14 @@
     .
     ├── file                        # Documentation files
     ├── src                         # Source files
-    │   ├── apis                    # Storing apis
+    │   ├── apis                    # Configurate all apis
     │   ├── commons                 # Common utils
     │   └── cores                   # Core bussines
-    │   └── plugins                 # Plugins for happi
+    │   │   └── config              # Storing configuration
+    │   │   └── db                  # DB migration, models
+    │   │   └── libs                # Some libs like cache, queue, ..
+    │   │   └── services            # Core bussines logic here
+    │   └── plugins                 # Plugins for happi framwork
     ├── docker-compose.yml          # Build the database for developing
     └── README.md
 
