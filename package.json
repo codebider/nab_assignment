@@ -35,6 +35,7 @@
     "kind-of": "6.0.3",
     "lodash": "4.17.15",
     "nconf": "0.10.0",
+    "node-cache-redis": "6.1.0",
     "pg": "7.18.1",
     "pg-hstore": "2.3.3",
     "sequelize": "5.21.4",

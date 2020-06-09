@@ -4,7 +4,7 @@ const throwIfMissing = require('../../../commons/assertion/throwIfMissing');
 const isMissing = require('../../../commons/conditional/isMissing');
 const NotFoundError = require('../../../commons/errors/NotFoundError');
 
-const REQUIRED_OPTIONS = ['logger', 'productDao', 'activityService'];
+const REQUIRED_OPTIONS = ['logger', 'productDao', 'activityService', 'cache'];
 
 /**
  * ProductService
@@ -65,7 +65,10 @@ class ProductService {
    */
   async getById(id) {
     // TODO: caching this one
-    const product = await this.productDao.findById(id);
+    const product = await this.cache.products.get(`DEMO${id}`, async () => {
+      const data = await this.productDao.findById(id);
+      return data;
+    });
 
     if (isMissing(product)) {
       throw new NotFoundError('Not found');
