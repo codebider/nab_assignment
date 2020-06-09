@@ -63,6 +63,7 @@ class ProductService {
    * @returns {Promise<Object>}
    */
   async getById(id) {
+    // TODO: caching this one
     const product = await this.productDao.findById(id);
 
     if (isMissing(product)) {
