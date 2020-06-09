@@ -43,10 +43,10 @@ const queryRange = (field, from, to) => {
 const buildOrder = value => {
   if (value.indexOf('-') === 0) {
     const field = value.replace('-', '');
-    return [[field, 'ASC']];
+    return [[field, 'DESC']];
   }
 
-  return [[value, 'DESC']];
+  return [[value, 'ASC']];
 };
 
 module.exports = {
