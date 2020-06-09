@@ -2,7 +2,7 @@ const { stringItem, id, objectItem, numberItem } = require('../../../schemas');
 
 const headerSchema = objectItem
   .keys({
-    authorization: stringItem.example('TOKEN'),
+    uuid: stringItem.example('8717febc-a9e7-11ea-bb37-0242ac130002'),
   })
   .unknown();
 

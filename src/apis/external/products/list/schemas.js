@@ -1,5 +1,11 @@
 const { stringItem, id, objectItem, numberItem, allowMissing } = require('../../../schemas');
 
+const headerSchema = objectItem
+  .keys({
+    uuid: stringItem.example('8717febc-a9e7-11ea-bb37-0242ac130002'),
+  })
+  .unknown();
+
 const querySchema = objectItem.keys({
   branch: stringItem.example('apple').allow(...allowMissing),
   colour: stringItem.example('red').allow(...allowMissing),
@@ -19,6 +25,7 @@ const responseSchema = objectItem.keys({
 });
 
 module.exports = {
+  headerSchema,
   querySchema,
   responseSchema,
 };
