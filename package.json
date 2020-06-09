@@ -29,10 +29,12 @@
     "bignumber.js": "9.0.0",
     "es6-error": "4.1.1",
     "hapi-swagger": "13.0.2",
+    "husky": "4.2.5",
     "is_js": "0.9.0",
     "json-stringify-safe": "5.0.1",
     "jsonwebtoken": "8.5.1",
     "kind-of": "6.0.3",
+    "lint-staged": "10.2.9",
     "lodash": "4.17.15",
     "nconf": "0.10.0",
     "node-cache-redis": "6.1.0",
@@ -81,5 +83,13 @@
   "engines": {
     "node": ">=8.3.0"
   },
-  "homepage": "https://github.com/daniel93cs/nab_assessment#readme"
+  "homepage": "https://github.com/daniel93cs/nab_assessment#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  }
 }
