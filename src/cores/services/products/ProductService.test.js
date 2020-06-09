@@ -71,15 +71,16 @@ describe('ProductService', () => {
 
       const input = {
         search: 'name',
+        sortBy: 'name',
         page: 1,
         limit: 10,
       };
 
-      const { page, limit, ...filters } = input;
+      const { page, limit, sortBy, ...filters } = input;
 
       // Validate params
       when(findAllAndFilterMock)
-        .calledWith(filters, page, limit)
+        .calledWith(filters, sortBy, page, limit)
         .mockResolvedValue(data);
       // When
       const result = await service.list(input);
