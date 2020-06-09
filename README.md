@@ -15,8 +15,8 @@
 3. API Layer
 
 * External - For user facing (need to optimize such as caching, ...)
-- [ ] GET api/external/products - Get, search, filter products
-- [ ] GET api/external/products/{id} - Get product detail
+- [x] GET api/external/products - Get, search, filter products
+- [x] GET api/external/products/{id} - Get product detail
 
 * Internal - For internal users like admin.
 - [ ] POST api/internal/products - Create product
