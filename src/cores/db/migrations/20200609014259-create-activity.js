@@ -13,7 +13,7 @@ module.exports = {
       },
       action: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM('searching', 'filtering', 'viewing'),
       },
       payload: {
         type: Sequelize.JSONB,
