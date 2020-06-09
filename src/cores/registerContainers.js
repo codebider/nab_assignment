@@ -1,5 +1,6 @@
 const { createContainer, asValue, asFunction } = require('awilix');
 const get = require('lodash/get');
+
 const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/models');
