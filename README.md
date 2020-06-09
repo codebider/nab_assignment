@@ -1,9 +1,23 @@
 # NAB Assessment
 
-### Requirements
-(Private)
+## Table of Contents
 
-### System Design
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Getting Started](#getting-started)
+  - [System Architecture](#system-architecture)
+  - [Code structure](#code-structure)
+  - [Requirements](#requirements)
+  - [Development](#development)
+  - [Migration](#Migration)
+- [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+## Getting started
+
+### System Architecture
 1. A high-level solution diagram for the components.
 
 ![High-level solution diagram](./files/high-level_solution.png)
@@ -40,10 +54,38 @@
     ├── docker-compose.yml          # Build the database for developing
     └── README.md
 
+### Requirements
+
+- [Install **Docker**](https://docs.docker.com/install/)
+- [Install **Docker Compose**](https://docs.docker.com/compose/install/)
+- [Install **NodeJs**](https://nodejs.org/en/download/)
+
+### Prepare for first setup
+
+1. Install node modules: `npm install`
+
+2. Build a local database: `docker-compose up --detach`
+
+3. Migrate database: `npm run sequelize-cli db:migrate`
+
+4. Seeds data for develop: `npm run sequelize-cli db:seed:all`
+
 ### Development
-Steps to run service locally
-- Install libs `npm install`
-- Start service `npm run develop`
 
-### Example:
+1. Run the app `npm run develop`
 
+2. Run unit test `npm test`
+
+3. Run unit test with coverage `npm run test:coverage`
+
+4. Run linter `npm run lint`
+
+### Migration
+- Use this command line to create new model
+`npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string`
+
+- Migrate database: `npm run sequelize-cli db:migrate`
+
+- Undo migrate: `npm run sequelize-cli db:migrate:undo`
+
+## References

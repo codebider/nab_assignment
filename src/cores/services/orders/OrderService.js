@@ -29,10 +29,6 @@ class OrderService {
   async create(payload) {
     this.logger.debug('Create order with payload', payload);
     const { products, ...order } = payload;
-    // Calculate total price
-    const shippingFee = 100; // Hardcode for now, should be calculate base on address
-
-    const totalPrice = bigNumber(shippingFee);
 
     const productIds = products.map(({ productId }) => productId);
     const productPrices = await this.productDao.getPricing(productIds);
@@ -42,6 +38,10 @@ class OrderService {
       throw new BadUserInputError('Product Id Not Found');
     }
 
+    // Calculate total price
+    const shippingFee = 100; // Hardcode for now, should be calculate base on address
+
+    const totalPrice = bigNumber(shippingFee);
     products.forEach(item => {
       const { quantity, productId } = item;
       const { price } = find(productPrices, { id: productId });
