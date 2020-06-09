@@ -11,6 +11,10 @@
   - [Requirements](#requirements)
   - [Development](#development)
   - [Migration](#Migration)
+  - [Note](#note)
+  - [Suggested](#Suggested)
+  - [TODO](#TODO)
+  - [Sample](#sample)
 - [References](#references)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -92,6 +96,16 @@
 - Undo migrate:
 
 `npm run sequelize-cli db:migrate:undo`
+
+### note
+- In the client side, we need to generate the uuid and pass to header so that we can store this value to activity logs. So that we can easily track user flow.  
+
+### Suggested
+- For tracking activities, we can use GA (Google Analytics). it is more powerful for tracking user flow.
+
+### TODO:
+- Finish all remain apis.
+- Use queue for save activity event.
 
 ### Sample
 - Get list products
