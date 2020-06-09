@@ -5,13 +5,13 @@ const handler = require('./handler');
 const schemas = require('./schemas');
 
 const route = {
-  method: 'GET',
+  method: 'POST',
   path: '/internal/orders',
   handler: handler.list,
   options: {
     tags: ['api', 'internal', 'orders', 'create'],
-    description: 'create orders',
-    notes: 'create orders',
+    description: 'Create an order',
+    notes: 'Create an order',
     validate: {
       headers: schemas.headerSchema,
       payload: schemas.payloadSchema,

@@ -1,4 +1,4 @@
-const { stringItem, id, objectItem, numberItem, allowMissing } = require('../../../schemas');
+const { stringItem, id, objectItem, numberItem, allowMissing, arrayItem } = require('../../../schemas');
 
 const headerSchema = objectItem
   .keys({
@@ -6,19 +6,21 @@ const headerSchema = objectItem
   })
   .unknown();
 
+const productItem = objectItem.keys({
+  productId: numberItem.example(1),
+  quantity: numberItem.example(2),
+});
+
 const payloadSchema = objectItem.keys({
-  uuid: stringItem.example('8717febc-a9e7-11ea-bb37-0242ac130002').allow(...allowMissing),
-  action: stringItem.example('filtering').allow(...allowMissing),
-  limit: numberItem.example(10).allow(...allowMissing),
-  page: numberItem.example(1).allow(...allowMissing),
+  customerPhone: stringItem.required().example('0961171948'),
+  customerName: stringItem.required().example('Daniel'),
+  shippingAddress: stringItem.required().example('235 Cong Hoa'),
+  shippingCity: stringItem.required().example('Ho Chi Minh'),
+  products: arrayItem.items(productItem),
 });
 
 const responseSchema = objectItem.keys({
-  data: {
-    id,
-    fullName: stringItem,
-    token: stringItem,
-  },
+  data: {},
 });
 
 module.exports = {

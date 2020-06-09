@@ -28,7 +28,8 @@ class OrderService {
     // TODO: Validate product ids
 
     // Calculate total price
-    const { shippingFee } = order;
+    const shippingFee = 100; // Hardcode for now, should be calculate base on address
+
     const totalPrice = bigNumber(shippingFee);
 
     products.forEach(({ price, quantity }) => {

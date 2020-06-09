@@ -7,6 +7,8 @@ const numberItem = Joi.number();
 
 const objectItem = Joi.object();
 
+const arrayItem = Joi.array();
+
 // Specific
 const id = numberItem.example(10);
 
@@ -22,6 +24,7 @@ module.exports = {
   objectItem,
   numberItem,
   stringItem,
+  arrayItem,
   id,
   OK,
 };
