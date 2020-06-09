@@ -1,2 +1,8 @@
 # JetBrains - Developer Tools for Professionals and Teams
-.idea/
+.idea
+
+# Node modules
+node_modules
+
+# Coverage for unit test
+coverage

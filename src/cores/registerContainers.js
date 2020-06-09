@@ -1,9 +1,14 @@
 const { createContainer, asValue, asFunction } = require('awilix');
+const get = require('lodash/get');
+const { v1: uuidV1 } = require('uuid');
+
 const config = require('./config');
 const logger = require('./utils/logger');
 const db = require('./db/models');
 const productDao = require('./services/daos/products');
+const activityDao = require('./services/daos/activities');
 const productService = require('./services/products');
+const activityService = require('./services/activities');
 // Main container for whole application.
 const container = createContainer();
 
@@ -15,16 +20,20 @@ container.register({
   // DB
   db: asValue(db),
   productDao: asFunction(productDao).singleton(),
+  activityDao: asFunction(activityDao).singleton(),
 
   // Services
-  productService: asFunction(productService).singleton(),
+  productService: asFunction(productService).scoped(),
+  activityService: asFunction(activityService).scoped(),
 });
 
-const registerContainer = () => {
+const registerContainer = request => {
+  const uuid = get(request, 'headers.uuid', uuidV1());
   const requestScope = container.createScope();
   // services
   requestScope.register({
     // register for scope
+    uuid: asValue(uuid),
   });
 
   return requestScope;

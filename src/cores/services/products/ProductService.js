@@ -4,7 +4,7 @@ const throwIfMissing = require('../../../commons/assertion/throwIfMissing');
 const isMissing = require('../../../commons/conditional/isMissing');
 const NotFoundError = require('../../../commons/errors/NotFoundError');
 
-const REQUIRED_OPTIONS = ['logger', 'productDao'];
+const REQUIRED_OPTIONS = ['logger', 'productDao', 'activityService'];
 
 /**
  * ProductService
@@ -32,6 +32,20 @@ class ProductService {
       page,
       limit,
     );
+
+    if (search) {
+      await this.activityService.createSearchingActivity(search);
+    }
+
+    if (colour || branch || priceFrom || priceTo) {
+      await this.activityService.createFilteringActivity({
+        colour,
+        branch,
+        priceFrom,
+        priceTo,
+      });
+    }
+
     return {
       data,
       meta: {
@@ -49,12 +63,15 @@ class ProductService {
    * @returns {Promise<Object>}
    */
   async getById(id) {
+    // TODO: caching this one
     const product = await this.productDao.findById(id);
 
     if (isMissing(product)) {
       throw new NotFoundError('Not found');
     }
-
+    // Save to activity logs
+    // TODO move this one to queue
+    await this.activityService.createViewingActivity(id);
     return product;
   }
 }
