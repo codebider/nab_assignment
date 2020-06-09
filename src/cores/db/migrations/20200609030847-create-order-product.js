@@ -23,10 +23,6 @@ module.exports = {
         },
         allowNull: false,
       },
-      productName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       price: {
         allowNull: false,
         type: Sequelize.DOUBLE,
