@@ -36,7 +36,8 @@
     "nconf": "0.10.0",
     "pg": "7.18.1",
     "pg-hstore": "2.3.3",
-    "sequelize": "5.21.4"
+    "sequelize": "5.21.4",
+    "uuid": "8.1.0"
   },
   "devDependencies": {
     "eslint": "5.15.3",

@@ -1,5 +1,6 @@
 const { createContainer, asValue, asFunction } = require('awilix');
 const get = require('lodash/get');
+const { v1: uuidV1 } = require('uuid');
 
 const config = require('./config');
 const logger = require('./utils/logger');
@@ -27,7 +28,7 @@ container.register({
 });
 
 const registerContainer = request => {
-  const uuid = get(request, 'headers.uuid');
+  const uuid = get(request, 'headers.uuid', uuidV1());
   const requestScope = container.createScope();
   // services
   requestScope.register({
