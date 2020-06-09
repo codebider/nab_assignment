@@ -28,13 +28,6 @@ describe('mix method method', () => {
   });
 });
 
-describe('isGreaterThan method method', () => {
-  it(`should return correct data"`, () => {
-    const value = new BigNumber(0.5);
-    expect(value.isGreaterThan(0.1)).toBeTrue();
-  });
-});
-
 describe('toFixed method method', () => {
   it(`should return correct data"`, () => {
     const value = new BigNumber(0.5123);

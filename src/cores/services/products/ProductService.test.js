@@ -5,9 +5,11 @@ const ProductService = require('./ProductService');
 describe('ProductService', () => {
   let service = null;
   let findAllAndFilterMock;
+  let createSearchingActivityMock;
 
   beforeEach(() => {
     findAllAndFilterMock = jest.fn();
+    createSearchingActivityMock = jest.fn();
 
     const logger = {
       info: jest.fn(),
@@ -18,9 +20,14 @@ describe('ProductService', () => {
       findAllAndFilter: findAllAndFilterMock,
     };
 
+    const activityService = {
+      createSearchingActivity: createSearchingActivityMock,
+    };
+
     service = new ProductService({
       logger,
       productDao,
+      activityService,
     });
   });
 
@@ -69,6 +76,10 @@ describe('ProductService', () => {
         ],
         meta: { limit: 10, page: 1, total: 2 },
       });
+
+      // Should create searching activity
+      expect(createSearchingActivityMock).toBeCalledTimes(1);
+      expect(createSearchingActivityMock).toBeCalledWith('name');
     });
   });
 });
