@@ -11,9 +11,14 @@ module.exports = (sequelize, DataTypes) => {
   );
   OrderProduct.associate = models => {
     // associations can be defined here
-    const { Order } = models;
+    const { Order, Product } = models;
     OrderProduct.belongsTo(Order, {
       foreignKey: 'orderId',
+      targetKey: 'id',
+    });
+
+    OrderProduct.belongsTo(Product, {
+      foreignKey: 'productId',
       targetKey: 'id',
     });
   };
