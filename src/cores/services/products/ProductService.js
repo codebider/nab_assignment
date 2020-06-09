@@ -4,7 +4,7 @@ const throwIfMissing = require('../../../commons/assertion/throwIfMissing');
 const isMissing = require('../../../commons/conditional/isMissing');
 const NotFoundError = require('../../../commons/errors/NotFoundError');
 
-const REQUIRED_OPTIONS = ['logger', 'productDao'];
+const REQUIRED_OPTIONS = ['logger', 'productDao', 'activityService'];
 
 /**
  * ProductService
@@ -54,7 +54,9 @@ class ProductService {
     if (isMissing(product)) {
       throw new NotFoundError('Not found');
     }
-
+    // Save to activity logs
+    // TODO move this one to queue
+    await this.activityService.createViewingActivity(id);
     return product;
   }
 }
