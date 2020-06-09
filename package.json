@@ -26,6 +26,7 @@
     "@hapi/joi": "17.1.1",
     "@hapi/vision": "6.0.0",
     "awilix": "4.2.3",
+    "bignumber.js": "9.0.0",
     "es6-error": "4.1.1",
     "hapi-swagger": "13.0.2",
     "is_js": "0.9.0",
