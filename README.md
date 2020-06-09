@@ -25,7 +25,7 @@
 - [ ] DELETE api/internal/products/{id} - Delete product
 - [ ] POST api/internal/orders - Make an order
 - [ ] POST api/internal/orders/{id} - Get order detail
-- [ ] GET api/internal/activities - Get, filter list activities
+- [x] GET api/internal/activities - Get, filter list activities
 
 
 ### Code structure

@@ -43,6 +43,25 @@ class ActivityService {
       payload,
     });
   }
+
+  async list(query) {
+    const { action, uuid, page = 1, limit = 10 } = query;
+
+    const { rows: data, count: total } = await this.activityDao.findAllAndFilter(
+      { action, uuid },
+      page,
+      limit,
+    );
+
+    return {
+      data,
+      meta: {
+        total,
+        limit,
+        page,
+      },
+    };
+  }
 }
 
 module.exports = ActivityService;
